@@ -1,0 +1,310 @@
+// out: ../css/main.css, compress:false, strictMath:false
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+@color-brand: #695542;
+@color-border: #d5ccc5;
+@color-bg: #c5bcb5 ;
+@color-text: @color-brand;
+
+
+@content-padding-xsm: 5px;
+@content-padding-sm: 10px;
+@content-padding: 16px;
+@content-padding-lg: 40px;
+@container-padding: 20px;
+@container-padding-lg: 40px;
+@container-padding-xlg: 70px;
+@container-padding-xxlg: 100px;
+@bower_components_path: '../bower_components';
+@bootstrap_less_path: "@{bower_components_path}/bootstrap/less";
+/* ==========================================================================
+   Bootstrap Customize Less
+   ========================================================================== */
+
+@import "variables.less";
+@import "@{bootstrap_less_path}/mixins.less";
+// Reset and dependencies
+@import "@{bootstrap_less_path}/normalize.less";
+@import "@{bootstrap_less_path}/print.less";
+@import "@{bootstrap_less_path}/glyphicons.less";
+// Core CSS
+@import "@{bootstrap_less_path}/scaffolding.less";
+@import "@{bootstrap_less_path}/type.less";
+@import "@{bootstrap_less_path}/code.less";
+@import "@{bootstrap_less_path}/grid.less";
+@import "@{bootstrap_less_path}/tables.less";
+@import "@{bootstrap_less_path}/forms.less";
+@import "@{bootstrap_less_path}/buttons.less";
+// Components
+@import "@{bootstrap_less_path}/component-animations.less";
+@import "@{bootstrap_less_path}/dropdowns.less";
+@import "@{bootstrap_less_path}/button-groups.less";
+@import "@{bootstrap_less_path}/input-groups.less";
+@import "@{bootstrap_less_path}/navs.less";
+@import "@{bootstrap_less_path}/navbar.less";
+@import "@{bootstrap_less_path}/breadcrumbs.less";
+@import "@{bootstrap_less_path}/pagination.less";
+@import "@{bootstrap_less_path}/pager.less";
+@import "@{bootstrap_less_path}/labels.less";
+@import "@{bootstrap_less_path}/badges.less";
+@import "@{bootstrap_less_path}/jumbotron.less";
+@import "@{bootstrap_less_path}/thumbnails.less";
+@import "@{bootstrap_less_path}/alerts.less";
+@import "@{bootstrap_less_path}/progress-bars.less";
+@import "@{bootstrap_less_path}/media.less";
+@import "@{bootstrap_less_path}/list-group.less";
+@import "@{bootstrap_less_path}/panels.less";
+@import "@{bootstrap_less_path}/responsive-embed.less";
+@import "@{bootstrap_less_path}/wells.less";
+@import "@{bootstrap_less_path}/close.less";
+// Components w/ JavaScript
+@import "@{bootstrap_less_path}/modals.less";
+@import "@{bootstrap_less_path}/tooltip.less"; 
+@import "@{bootstrap_less_path}/popovers.less";
+@import "@{bootstrap_less_path}/carousel.less";
+// Utility classes
+@import "@{bootstrap_less_path}/utilities.less";
+@import "@{bootstrap_less_path}/responsive-utilities.less";
+/* ==========================================================================
+   Helper
+   ========================================================================== */
+
+//For editing only
+//* {
+//    transition: all 0.3s;
+//}
+/* ==========================================================================
+   Main Layout
+   ========================================================================== */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+body {
+    //    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+li {}
+
+.vertical-center-container {
+    position: relative;
+}
+
+.vertical-center-content {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.nowrap {
+    display: inline-block;
+}
+
+.responsive-container {
+    position: relative;
+    >canvas:first-child {
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+    >.responsive-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}
+
+.circle {
+    border-radius: 50%;
+    /* width and height can be anything, as long as they're equal */
+}
+/* scroll fixes */
+
+.modal-open .modal {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    overflow-y: scroll;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.radio-inline,
+.checkbox-inline {
+    &:not(last-child) {
+        margin-left: 0 !important;
+        margin-right: 10px !important;
+    }
+    &:last-child {
+        margin-right: 0 !important;
+    }
+}
+
+form div.radio {
+    display: block;
+    @media screen and (min-width: @screen-md-min) {
+        display: inline-block;
+        width: auto;
+    }
+}
+
+.select2-container {
+    width: 100% !important;
+}
+/* ==========================================================================
+   Bootstrap Validator
+   ========================================================================== */
+
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline,
+.has-error.radio label,
+.has-error.checkbox label,
+.has-error.radio-inline label,
+.has-error.checkbox-inline label {
+    color: @brand-danger;
+}
+
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline,
+.has-success.radio label,
+.has-success.checkbox label,
+.has-success.radio-inline label,
+.has-success.checkbox-inline label {
+    color: @brand-success;
+}
+
+.has-error .form-control-feedback {
+    color: @brand-danger;
+}
+
+.has-success .form-control-feedback {
+    color: @brand-success;
+}
+
+/* ==========================================================================
+   Page Layout
+   ========================================================================== */
+#wrapper {
+    background-image: url(../img/bg.jpg);
+    background-color: @color-bg;
+    background-position:center;
+    background-repeat:repeat-y;
+    background-size:1600px 1px;
+    .container {
+        max-width:1024px;
+    }
+    
+    .row {
+        .make-row(@content-padding);  
+        
+        >div {
+            .make-sm-column(6,@content-padding);   
+        }
+    }
+    h1,h2,h3,h4,h5,h6,h7 {
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+}
+.media {
+    padding:@content-padding;
+    border-radius: 10px;
+    border:solid 1px @color-border;
+    
+    margin-bottom:@content-padding;
+    
+    a:hover {
+        text-decoration: none;
+    }
+    
+    .media-body {
+        padding-left:@content-padding * 1.2;
+    }
+    
+    .applogo {
+        margin-bottom:@content-padding-xsm;
+    }
+    
+    .appname {
+        font-size:18px;
+        .text-center;   
+        
+    }
+    
+    .version {
+        font-size:11px;
+        .text-center;
+    }
+    
+    .internaluse {
+        font-size:18px;
+        margin-bottom:@content-padding-xsm;
+    }
+    
+    .requirement {
+        font-size:18px;
+        margin-bottom:@content-padding-xsm;
+    }
+    
+    .lastupdate {
+        font-size:18px;
+        margin-bottom:@content-padding-xsm;
+    }
+}
+
+#slogan {
+      background: url(../img/slogan_bg.png) center repeat-x;
+      width: 100%;
+}
+
+#header {
+    padding:20px 0 35px 93px;
+}
