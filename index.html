@@ -7,7 +7,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
         (function (b, o, i, l, e, r) {
@@ -27,16 +26,18 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-
+    <!-- script that must be load at head -->
+    <script src="bower_components/angular/angular.min.js"></script>
 
     <!-- vendor -->
     <!--    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">-->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.css">
-    <link rel="stylesheet" href="css/select2-bootstrap.css">
-    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">
-    <link rel="stylesheet" href="bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css">
+    <!--    <link rel="stylesheet" href="css/animate.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.css">-->
+    <!--    <link rel="stylesheet" href="css/select2-bootstrap.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css">-->
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
     <!-- end vendor -->
 
     <!-- app -->
@@ -55,10 +56,10 @@
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
-        <div id="topbar">
+        <div id="topbar" class="animated fadeInDown">
             <div class="container">
                 <div id="header">
-                <img src="img/logo.png">
+                    <img src="img/logo.png">
                 </div>
             </div>
             <div id="slogan" class="text-center">
@@ -67,20 +68,20 @@
         </div>
         <div id="content-wrapper">
             <div class="container">
-                <h2 class="text-center">Internal Apps Store</h2>
+                <h2 class="text-center animated fadeInDown">Internal Apps Store</h2>
                 <div class="row" ng-controller="AppListCtrl as controller">
-                    <div class="col-sm-6" ng-repeat="app in controller.apps">
-                        <div class="media" >
+                    <div class="col-sm-6 app-animation" ng-repeat="app in controller.apps" ng-cloak>
+                        <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img class="applogo media-object" src="img/applogo.png" width=72 height=auto>
-                                    <div class="appname">{{app.appname}}</div>
+                                    <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=auto>
+                                    <div class="displayname">{{app.appname}}</div>
                                     <div class="version">Version {{app.version}}</div>
                                 </a>
                             </div>
                             <div class="media-body">
                                 <div class="internaluse">{{app.internaluse}}</div>
-                                <div class="requirement">{{app.requirement}}</div>
+                                <div class="requirement"><i class="fa" ng-class="{'fa-apple':app.platform=='ios', 'fa-android':app.platform=='android'}"></i> {{app.requirement}}</div>
                                 <div class="lastupdate">Last update: {{app.lastupdate}}</div>
                             </div>
                         </div>
@@ -99,15 +100,16 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/ng-country-select/dist/ng-country-select.min.js"></script>
-    <script src="bower_components/select2/dist/js/select2.min.js"></script>
-    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
-    <script src="bower_components/bootbox/bootbox.js"></script>
-    <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>
+    <!--    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+    <!--    <script src="bower_components/ng-country-select/dist/ng-country-select.min.js"></script>-->
+    <!--    <script src="bower_components/select2/dist/js/select2.min.js"></script>-->
+    <!--    <script src="bower_components/angular-animate/angular-animate.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
+    <!--    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+    <!--    <script src="bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>-->
+    <!--    <script src="bower_components/bootbox/bootbox.js"></script>-->
+    <!--    <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>-->
     <!-- end vendor -->
 
 
