@@ -1,3 +1,7 @@
+<script>
+var __client = '<?=$this->e($client)?>';
+</script>
+
 <!doctype html>
 <html class="no-js" lang="" ng-app="appstore">
 
@@ -49,7 +53,7 @@
 
 </head>
 
-<body ng-controller="MainCtrl as main">
+<body ng-controller="MainCtrl as main" id="client-app-list">
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -69,20 +73,24 @@
         <div id="content-wrapper">
             <div class="container">
                 <h2 class="text-center animated fadeInDown">Internal Apps Store</h2>
+                <div class="row">
+                    <div class="col-xs-12 loading-animation" ng-if="controller.apps.length"><i class="fa fa-gear fa-spin" ></i></div>
+                </div>
                 <div class="row" ng-controller="AppListCtrl as controller">
                     <div class="col-sm-6 app-animation" ng-repeat="app in controller.apps" ng-cloak>
                         <div class="media">
                             <div class="media-left">
-                                <a href="#">
-                                    <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=auto>
-                                    <div class="displayname">{{app.appname}}</div>
-                                    <div class="version">Version {{app.version}}</div>
+                                <a ng-href="./{{app.client.name}}/{{app.name}}/{{app.platform}}/install">
+                                    <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=72>
+                                    <div class="appname">{{app.name}}</div>
+                                    <div class="version" ng-if='app.version'>Version {{app.version}}</div>
                                 </a>
                             </div>
                             <div class="media-body">
-                                <div class="internaluse">{{app.internaluse}}</div>
-                                <div class="requirement"><i class="fa" ng-class="{'fa-apple':app.platform=='ios', 'fa-android':app.platform=='android'}"></i> {{app.requirement}}</div>
-                                <div class="lastupdate">Last update: {{app.lastupdate}}</div>
+                                <div class="internaluse" ng-if='app.internaluse'>{{app.internaluse}}</div>
+                                <div class="requirement" ng-if='app.platform'><i class="fa" ng-class="{'fa-apple':app.platform=='ios', 'fa-android':app.platform=='android'}"></i> {{app.requirement}}</div>
+                                <div class="lastupdate"  ng-if='app.lastupdate'>Last update: {{app.lastupdate|date:'EEE, dd MMM yyyy'}}</div>
+                                <div class="provisionexpire" ng-if='app.provisionexpire'>Provision expire: {{app.provisionexpire|date:'EEE, dd MMM yyyy'}}</div>
                             </div>
                         </div>
                     </div>
@@ -114,11 +122,15 @@
 
 
     <!-- app -->
+    <script src="js/parse-1.4.2.min.js"></script>
+    <script src="js/ParseService.js"></script>
+    <script src="js/sax-js-master/lib/sax.js"></script>
+    <script src="js/plist-parser-master/lib/plist-parser.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/app.js"></script>
     <script src="js/service.js"></script>
     <script src="js/directive.js"></script>
-    <script src="js/route.js"></script>
+<!--    <script src="js/route.js"></script>-->
     <script src="js/controller.js"></script>
     <script src="js/main.js"></script>
     <!-- end -->

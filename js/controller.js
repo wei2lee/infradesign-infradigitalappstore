@@ -2,76 +2,35 @@ function MainCtrl($timeout) {
     var _this = this;
 }
 
-function AppListCtrl($timeout) {
+function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
     var _this = this;
-
     _this.apps = [];
-
     $timeout(function () {
+        var clientQuery = new Parse.Query(new ParseClient().className);
+        //__client variable is embed at top of the .html(or .php) file
+        clientQuery.equalTo('name', __client);
+        var appQuery = new Parse.Query(new ParseApp().className);
+        appQuery.include('client');
+        var appQueryWhereClient = appQuery.matchesQuery('client', clientQuery);
+        appQueryWhereClient.find().done(function(results) {
+            _this.apps = _.map(results, function(o) {
+                return new ParseApp(o); 
+            });
+        }).fail(function(error) {
+            
+        }).always(function(){
+            $scope.$apply();
+        });
+    }, 0);
+}
 
-        _this.apps = [
-            {
-                client: "hatten",
-                displayname: "TPSuite",
-                version: "1.3.0",
-                platform: "ios",
-                internaluse: "This app is for Internal Use Only.",
-                requirement: "iOS7.1.1 or above.",
-                lastupdate: "3, April 2015",
-                logosrc: "img/applogo.png",
-                versionsrc: "",
-                binarysrc: "",
-                plistsrc: "",
-                downloadsrc: ""
-        },
-            {
-                client: "hatten",
-                displayname: "TPSuite",
-                version: "1.3.0",
-                platform: "ios",
-                internaluse: "This app is for Internal Use Only.",
-                requirement: "iOS7.1.1 or above.",
-                lastupdate: "3, April 2015",
-                logosrc: "img/applogo.png",
-                versionsrc: "",
-                binarysrc: "",
-                plistsrc: "",
-                downloadsrc: ""
-        },
-            {
-                client: "hatten",
-                displayname: "TPSuite",
-                version: "1.3.0",
-                platform: "android",
-                internaluse: "This app is for Internal Use Only.",
-                requirement: "iOS7.1.1 or above.",
-                lastupdate: "3, April 2015",
-                logosrc: "img/applogo.png",
-                versionsrc: "",
-                binarysrc: "",
-                plistsrc: "",
-                downloadsrc: ""
-        },
-            {
-                client: "hatten",
-                displayname: "TPSuite",
-                version: "1.3.0",
-                platform: "android",
-                internaluse: "This app is for Internal Use Only.",
-                requirement: "iOS7.1.1 or above.",
-                lastupdate: "3, April 2015",
-                logosrc: "img/applogo.png",
-                versionsrc: "",
-                binarysrc: "",
-                plistsrc: "",
-                downloadsrc: ""
-        }
-    ]
-
-    }, 500);
+function AppCtrl($scope, $timeout, ParseApp, ParseClient) {
+    var _this = this;
+    
 }
 
 
 angular.module('appstore')
     .controller('MainCtrl', MainCtrl)
-    .controller('AppListCtrl', AppListCtrl);
+    .controller('AppListCtrl', AppListCtrl)
+    .controller('AppCtrl', AppCtrl);
