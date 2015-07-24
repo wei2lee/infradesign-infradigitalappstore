@@ -9799,12 +9799,12 @@ form div.radio {
   margin-bottom: 30px;
 }
 .app-animation.ng-enter {
-  transition: 0.5s ease-out all;
+  transition: 0.3s ease-out all;
   opacity: 0;
   right: -20px;
 }
 .app-animation.ng-enter-stagger {
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
   transition-duration: 0s;
 }
 .app-animation.ng-enter.ng-enter-active {
@@ -9838,7 +9838,7 @@ form div.radio {
   border-radius: 10px;
   border: solid 1px #d5ccc5;
   margin-bottom: 16px;
-  min-height: 159px;
+  min-height: 170px;
 }
 .media a:hover {
   text-decoration: none;
@@ -9847,11 +9847,15 @@ form div.radio {
   position: relative;
   padding-left: 19.2px;
 }
+.media .media-left a {
+  text-align: center;
+}
 .media .applogo {
   margin-bottom: 5px;
 }
 .media .appname {
-  font-size: 18px;
+  font-size: 14px;
+  line-height: 1.1em;
   text-align: center;
 }
 .media .version {
@@ -9859,7 +9863,8 @@ form div.radio {
   text-align: center;
 }
 .media .internaluse {
-  font-size: 18px;
+  color: #a4886d;
+  font-size: 11px;
   margin-bottom: 5px;
 }
 .media .requirement {
@@ -9871,6 +9876,7 @@ form div.radio {
   margin-bottom: 5px;
 }
 .media .provisionexpire {
+  color: #a4886d;
   position: absolute;
   bottom: 0;
   left: 19.2px;
@@ -9906,7 +9912,7 @@ form div.radio {
 }
 .form-panel {
   margin: 0 auto 20px;
-  padding: 15px 15px 5px;
+  padding: 15px 15px 15px 10px;
   background: #fff;
   border: 4px solid #cfcbca;
   box-shadow: 2px 1px 5px #919194;
@@ -9917,17 +9923,37 @@ form div.radio {
 @media screen and (min-width: 768px) {
   .form-panel {
     margin: 0 auto 40px;
-    padding: 30px 30px 10px;
+    padding: 30px 30px 20px 30px;
     background: #fff;
     border: 8px solid #cfcbca;
     box-shadow: 4px 2px 10px #919194;
   }
 }
-.form-panel form a.btn {
+.form-panel form .backtoappstore {
+  margin-left: 30px;
+}
+.form-panel form [type=submit] {
   background-color: transparent;
   border: none;
-  color: #695542;
 }
-.form-panel form a.btn:hover {
+.form-panel form [type=submit]:hover {
   text-decoration: underline;
+}
+.form-panel form [type=submit]:focus {
+  border: none;
+}
+#install-link .thankyou {
+  font-size: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+#install-link .clickheretodownload {
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#install-link .backtoappstore {
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
 }

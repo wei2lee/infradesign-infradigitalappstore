@@ -38,13 +38,6 @@
     <script src="bower_components/angular/angular.min.js"></script>
 
     <!-- vendor -->
-    <!--    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">-->
-    <!--    <link rel="stylesheet" href="css/animate.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.css">-->
-    <!--    <link rel="stylesheet" href="css/select2-bootstrap.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css">-->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
     <!-- end vendor -->
 
@@ -64,51 +57,42 @@
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
-        <!--
-        <div id="topbar" class="animated fadeInDown">
-            <div class="container">
-                <div id="header">
-                    <img src="img/logo.png">
-                </div>
-            </div>
-            <div id="slogan" class="text-center">
-                making ideas happen
-            </div>
-        </div>
--->
         <div id="content-wrapper">
             <div class="container">
-                <!--                <h2 class="text-center animated fadeInDown">Internal Apps Store</h2>-->
-                <div class="row">
-                    <div class="col-xs-12 loading-animation" ng-if="controller.apps.length"><i class="fa fa-gear fa-spin"></i>
-                    </div>
-                </div>
                 <div class="row" ng-controller="AppCtrl as controller">
-                    <div class="form-panel">
-                        <div class="form-title">Please login to install:</div>
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="textinput">Username</label>
-                                    <div class="col-md-10">
-                                        <input id="textinput" name="textinput" type="text" placeholder="Username" class="form-control">
+                    <div class="form-panel animated fadeInUp" id="install-authencation" ng-if="controller.stat == 0 || controller.stat == 1" ng-cloak>
+                        <div ng-if="controller.stat == 0">
+                            <div class="form-title">Please login to install:</div>
+                            <form class="form-horizontal" name="form" ng-submit="controller.login()">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="textinput">Username</label>
+                                        <div class="col-md-10">
+                                            <input name="username" ng-model="controller.username" type="text" placeholder="Username" class="form-control">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="textinput">Password</label>
-                                    <div class="col-md-10">
-                                        <input id="textinput" name="textinput" type="text" placeholder="Password" class="form-control">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="textinput">Password</label>
+                                        <div class="col-md-10">
+                                            <input name="password" ng-model="controller.password" type="text" placeholder="Password" class="form-control">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="button1id"></label>
-                                    <div class="col-md-10">
-                                        <a id="button2id" name="button2id" class="btn btn-danger pull-right">Back to Appstore</a>
-                                        <a id="button1id" name="button1id" class="btn btn-success pull-right">Login</a>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="button1id"></label>
+                                        <div class="col-md-10">
+                                            <a class="backtoappstore pull-right" ng-href="{{controller.app.client.name}}" target="_self">Back to Appstore</a>
+                                            <a class="loginbtn pull-right" ng-click="controller.login()" href="javascript:void(0)">Login</a>
+                                        </div>
+                                        <small class="animated fadeInRight text-danger" ng-if="controller.alert.message">{{controller.alert.message}}</small>
                                     </div>
-                                </div>
-                            </fieldset>
-                        </form>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div ng-if="controller.stat == 1" id="install-link">
+                            <div class="thankyou">Thank you!</div>
+                            <div class="clickheretodownload"><a ng-href="{{controller.app.downloadsrc}}"><u><strong>CLICK HERE TO DOWNLOAD</strong></u></a></div>
+                            <div class="backtoappstore"><a  ng-href="{{controller.app.client.name}}"  target="_self">Back to Apps Store</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,15 +109,8 @@
     <script src="bower_components/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <!--    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
-    <!--    <script src="bower_components/ng-country-select/dist/ng-country-select.min.js"></script>-->
-    <!--    <script src="bower_components/select2/dist/js/select2.min.js"></script>-->
     <!--    <script src="bower_components/angular-animate/angular-animate.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
-    <!--    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
-    <!--    <script src="bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>-->
-    <!--    <script src="bower_components/bootbox/bootbox.js"></script>-->
-    <!--    <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>-->
     <!-- end vendor -->
 
 
@@ -146,7 +123,6 @@
     <script src="js/app.js"></script>
     <script src="js/service.js"></script>
     <script src="js/directive.js"></script>
-    <!--    <script src="js/route.js"></script>-->
     <script src="js/controller.js"></script>
     <script src="js/main.js"></script>
     <!-- end -->

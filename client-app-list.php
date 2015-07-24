@@ -82,7 +82,7 @@ var __client = '<?=$this->e($client)?>';
                             <div class="media-left">
                                 <a ng-href="./{{app.client.name}}/{{app.name}}/{{app.platform}}/install">
                                     <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=72>
-                                    <div class="appname">{{app.name}}</div>
+                                    <div class="appname">{{app.displayname}}</div>
                                     <div class="version" ng-if='app.version'>Version {{app.version}}</div>
                                 </a>
                             </div>

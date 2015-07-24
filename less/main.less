@@ -268,12 +268,12 @@ form div.radio {
 
 .app-animation {
     &.ng-enter {
-        transition: 0.5s ease-out all;
+        transition: 0.3s ease-out all;
         opacity: 0;
         right: -20px;
     }
     &.ng-enter-stagger {
-        transition-delay: 0.2s;
+        transition-delay: 0.1s;
         transition-duration: 0s;
     }
     &.ng-enter.ng-enter-active {
@@ -310,7 +310,7 @@ form div.radio {
     border-radius: 10px;
     border: solid 1px @color-border;
     margin-bottom: @content-padding;
-    min-height: 159px;
+    min-height: 170px;
     a:hover {
         text-decoration: none;
     }
@@ -318,11 +318,17 @@ form div.radio {
         position: relative;
         padding-left: @content-padding * 1.2;
     }
+    .media-left {
+        a {
+            text-align:center;   
+        }
+    }
     .applogo {
         margin-bottom: @content-padding-xsm;
     }
     .appname {
-        font-size: 18px;
+        font-size: 14px;
+        line-height:1.1em;
         .text-center;
     }
     .version {
@@ -330,7 +336,8 @@ form div.radio {
         .text-center;
     }
     .internaluse {
-        font-size: 18px;
+        color:lighten(@text-color, 20%);
+        font-size: 11px;
         margin-bottom: @content-padding-xsm;
     }
     .requirement {
@@ -342,6 +349,7 @@ form div.radio {
         margin-bottom: @content-padding-xsm;
     }
     .provisionexpire {
+        color:lighten(@text-color, 20%);
         position: absolute;
         bottom: 0;
         left: 19.2px;
@@ -386,13 +394,13 @@ form div.radio {
 .form-panel {
     
     margin: 0 auto 20px;
-    padding: 15px 15px 5px;
+    padding: 15px 15px 15px 10px;
     background: #fff;
     border: 4px solid #cfcbca;
     box-shadow: 2px 1px 5px #919194;
     @media screen and (min-width:@screen-sm-min) {
         margin: 0 auto 40px;
-        padding: 30px 30px 10px;
+        padding: 30px 30px 20px 30px;
         background: #fff;
         border: 8px solid #cfcbca;
         box-shadow: 4px 2px 10px #919194;
@@ -402,14 +410,43 @@ form div.radio {
     text-align: left;
     
     form {
-        a.btn {
+        .backtoappstore {
+            margin-left:30px;   
+        }
+        [type=submit] {
             background-color:transparent;
             border:none;
-            color:@color-text;
             &:hover {
                 text-decoration: underline;
             }
+            &:focus {
+                border:none;   
+            }
         }
+    }
+}
+
+#install-authencation {
+    
+}
+
+#install-link {
+    .thankyou {
+        font-size:24px;
+        margin-bottom:40px;
+        .text-center;
+    }
+    
+    .clickheretodownload {
+        font-size:14px;
+        margin-bottom:20px;
+        .text-center;
+    }
+    
+    .backtoappstore {
+        font-size:14px;
+        margin-bottom:20px;
+        .text-center;
     }
 }
 
