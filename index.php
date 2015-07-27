@@ -9,6 +9,9 @@ $app->hook('slim.before', function () use ($app, $templates) {
     $baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex) . '/';
     $templates->addData(['baseUrl' => $baseUrl]);
 });
+$app->get('/', function () use ($templates) {
+    echo $templates->render('client-app-list', ['client' => '']);
+});
 $app->get('/:client/', function ($client) use ($templates) {
     echo $templates->render('client-app-list', ['client' => $client]);
 });

@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     // Configurable paths for the app
     var appConfig = {
         app: '.',
-        dist: '../../dist'
+        dist: './dist'
     };
 
     // Grunt configuration
@@ -125,9 +125,9 @@ module.exports = function (grunt) {
                             '*.html',
                             'views/{,*/}*.html',
                             'styles/patterns/*.*',
-                            'img/{,*/}*.*',
-                            'js/**',
-                            'css/**'
+                            'img/{,*/}*.*'
+//                            'js/**',
+//                            'css/**'
                         ]
                     },
                     {
@@ -180,13 +180,13 @@ module.exports = function (grunt) {
             }
         },
         useminPrepare: {
-            html: 'app/index.html',
+            html: ['client-app-list.html', 'app-install.html'],
             options: {
-                dest: 'dist'
+                dest: './dist'
             }
         },
         usemin: {
-            html: ['dist/index.html']
+            html: ['dist/client-app-list.html', 'dist/app-install.html'],
         }
     });
 
@@ -210,10 +210,10 @@ module.exports = function (grunt) {
         'less',
         'useminPrepare',
         'concat',
-        'copy:dist',
-        'cssmin',
-        'uglify',
-        'filerev',
+//        'copy:dist',
+//        'cssmin',
+//        'uglify',
+//        'filerev',
         'usemin',
         //'htmlmin'
     ]);

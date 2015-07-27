@@ -2,7 +2,8 @@
 /* ==========================================================================
    Variables
    ========================================================================== */
-
+@screen-ms-min: 480px;
+@screen-ms-max: 767px;
 @color-brand: #695542;
 @color-border: #d5ccc5;
 @color-bg: #c5bcb5;
@@ -159,6 +160,10 @@ li {}
     height: 100%;
     background-color: #fff;
 }
+
+.inline-block {
+    display:inline-block;   
+}
 /* ==========================================================================
    Angular
    ========================================================================== */
@@ -240,6 +245,8 @@ form div.radio {
    ========================================================================== */
 
 #wrapper {
+    overflow-x:hidden;
+    overflow-y:scroll;
     background-image: url(../img/bg.jpg);
     background-color: @color-bg;
     background-position: center;
@@ -282,6 +289,28 @@ form div.radio {
     }
 }
 
+.fade-animation {
+    &.ng-enter {
+        transition: 0.3s ease-out all;
+        opacity: 0;
+    }
+    &.ng-enter-stagger {
+        transition-delay: 0.1s;
+        transition-duration: 0s;
+    }
+    &.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    &.ng-leave {
+        transition: 0.3s ease-out all;
+        opacity: 1;
+    }
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+}
+
+
 .loading-animation {
     .text-center;
     font-size: 36px;
@@ -306,11 +335,18 @@ form div.radio {
 }
 
 .media {
-    padding: @content-padding;
+    padding: @content-padding-sm;
+    @media screen and (min-width:@screen-ms-min) {
+        padding: @content-padding;
+    }
     border-radius: 10px;
     border: solid 1px @color-border;
     margin-bottom: @content-padding;
-    min-height: 170px;
+    
+    min-height:auto;
+    @media screen and (min-width:@screen-ms-min) {
+        min-height: 170px;
+    }
     a:hover {
         text-decoration: none;
     }
@@ -327,33 +363,59 @@ form div.radio {
         margin-bottom: @content-padding-xsm;
     }
     .appname {
-        font-size: 14px;
+        font-size:11px;
+        @media screen and (min-width:@screen-ms-min) {
+            font-size: 14px;
+        }
         line-height:1.1em;
         .text-center;
     }
     .version {
-        font-size: 11px;
+        font-size:10px;
+        @media screen and (min-width:@screen-ms-min) {
+            font-size: 11px;
+        }
         .text-center;
     }
     .internaluse {
         color:lighten(@text-color, 20%);
+        line-height:1.2em;
         font-size: 11px;
-        margin-bottom: @content-padding-xsm;
+        margin-bottom: @content-padding-xsm * 2;
+        
     }
     .requirement {
-        font-size: 18px;
+        line-height: 1.2em;
+        font-size:11px;
+        @media screen and (min-width:@screen-ms-min) {
+            font-size:14px;
+        }
+        @media screen and (min-width:@screen-md-min) {
+            font-size: 18px;
+        }
         margin-bottom: @content-padding-xsm;
     }
     .lastupdate {
-        font-size: 18px;
+        line-height: 1.2em;
+        font-size:11px;
+        @media screen and (min-width:@screen-ms-min) {
+            font-size:14px;
+        }
+        @media screen and (min-width:@screen-md-min) {
+            font-size: 18px;
+        }
         margin-bottom: @content-padding-xsm;
     }
     .provisionexpire {
+        line-height:1.2em;
         color:lighten(@text-color, 20%);
         position: absolute;
         bottom: 0;
         left: 19.2px;
-        font-size: 11px;
+        font-size:10px;
+        @media screen and (min-width:@screen-ms-min) {
+            font-size: 11px;
+        }
         //margin-bottom: @content-padding-xsm;
     }
 }
@@ -364,7 +426,12 @@ form div.radio {
 }
 
 #header {
-    padding: 20px 0 35px 93px;
+    padding:20px 0 35px 0;
+    text-align: center;
+    @media screen and (min-width:@screen-ms-min) {
+        padding: 20px 0 35px 93px;
+        text-align: left;
+    }
 }
 
 

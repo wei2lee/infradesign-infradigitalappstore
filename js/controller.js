@@ -4,13 +4,18 @@ function MainCtrl($timeout) {
 
 function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
     var _this = this;
-    _this.apps = [];
+    
+    //__xxxxx variable is embed at top of the .html(or .php) file
+    _this.apps = undefined;
+    
+    _this.__client = __client;
     $timeout(function () {
         var clientQuery = new Parse.Query(new ParseClient().className);
-        //__client variable is embed at top of the .html(or .php) file
-        clientQuery.equalTo('name', __client);
+        clientQuery.equalTo('name', _this.__client);
         var appQuery = new Parse.Query(new ParseApp().className);
         appQuery.include('client');
+        appQuery.equalTo('visible', true);
+        appQuery.ascending('displayname');
         var appQueryWhereClient = appQuery.matchesQuery('client', clientQuery);
         appQueryWhereClient.find().done(function(results) {
             _this.apps = _.map(results, function(o) {
@@ -27,19 +32,26 @@ function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
 function AppCtrl($scope, $timeout, ParseApp, ParseClient) {
     var _this = this;
     
+    //__xxxxx variable is embed at top of the .html(or .php) file
+    _this.__client = __client;
+    _this.__platform = __platform;
+    _this.__app = __app;
+    
     $timeout(function() {
         _this.stat = -1;
     });
     
+    
     var appQuery = new Parse.Query(new ParseApp().className);
-    appQuery.equalTo('name', __app);
-    appQuery.equalTo('platform', __platform);
+    appQuery.equalTo('name', _this.__app);
+    appQuery.equalTo('platform', _this.__platform);
     appQuery.include('client');
     
     var clientQuery = new Parse.Query(new ParseClient().className);
-    clientQuery.equalTo('name', __client);
+    clientQuery.equalTo('name', _this.__client);
     
     appQuery = appQuery.matchesQuery('client', clientQuery);
+    
                      
     appQuery.first().done(function(result) {
         _this.app = new ParseApp(result);
@@ -71,8 +83,28 @@ function AppCtrl($scope, $timeout, ParseApp, ParseClient) {
     }
 }
 
+function ClientNotExistCtrl($scope, $timeout, ParseApp, ParseClient) {
+    var _this = this;
+    _this.__client = __client;
+    
+    var clientQuery = new Parse.Query(new ParseClient().className);
+    clientQuery.ascending("name");
+    clientQuery.find().done(function(results) {
+        $timeout(function(){
+        _this.clients = _.map(results, function(o) {
+           return new ParseClient(o); 
+        });
+        },0);
+    }).fail(function(error) {
+        
+    }).always(function() {
+        $scope.$apply();    
+    });
+}
+
 
 angular.module('appstore')
     .controller('MainCtrl', MainCtrl)
     .controller('AppListCtrl', AppListCtrl)
+    .controller('ClientNotExistCtrl', ClientNotExistCtrl)
     .controller('AppCtrl', AppCtrl);

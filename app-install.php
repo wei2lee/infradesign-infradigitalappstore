@@ -29,7 +29,7 @@
             e.src = 'https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e, r)
         }(window, document, 'script', 'ga'));
-        ga('create', 'UA-65046498-1', 'auto');
+        ga('create', 'UA-42485850-5', 'auto');
     </script>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -37,13 +37,13 @@
     <!-- script that must be load at head -->
     <script src="bower_components/angular/angular.min.js"></script>
 
-    <!-- vendor -->
+    <!-- build:css(.) styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
-    <!-- end vendor -->
+    <!-- endbuild -->
 
-    <!-- app -->
+    <!-- build:css({.tmp,.}) styles/style.css -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- end -->
+    <!-- endbuild -->
 
 
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput">Password</label>
                                         <div class="col-md-10">
-                                            <input name="password" ng-model="controller.password" type="text" placeholder="Password" class="form-control">
+                                            <input name="password" ng-model="controller.password" type="password" placeholder="Password" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -100,32 +100,32 @@
     </div>
 
 
-    <!-- vendor -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')
+        window.jQuery || document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>')
     </script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <!--    <script src="bower_components/angular-animate/angular-animate.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
-    <!-- end vendor -->
+    <!-- endbuild -->
 
 
-    <!-- app -->
+    <!-- build:js({.tmp,.}) scripts/scripts.js -->
     <script src="js/parse-1.4.2.min.js"></script>
     <script src="js/ParseService.js"></script>
     <script src="js/sax-js-master/lib/sax.js"></script>
     <script src="js/plist-parser-master/lib/plist-parser.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/service.js"></script>
     <script src="js/directive.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/main.js"></script>
-    <!-- end -->
+    <!-- endbuild -->
 </body>
 
 </html>

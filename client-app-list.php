@@ -25,7 +25,7 @@ var __client = '<?=$this->e($client)?>';
             e.src = 'https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e, r)
         }(window, document, 'script', 'ga'));
-        ga('create', 'UA-65046498-1', 'auto');
+        ga('create', 'UA-42485850-5', 'auto');
     </script>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -33,20 +33,13 @@ var __client = '<?=$this->e($client)?>';
     <!-- script that must be load at head -->
     <script src="bower_components/angular/angular.min.js"></script>
 
-    <!-- vendor -->
-    <!--    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">-->
-    <!--    <link rel="stylesheet" href="css/animate.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.css">-->
-    <!--    <link rel="stylesheet" href="css/select2-bootstrap.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css">-->
+    <!-- build:css(.) styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
-    <!-- end vendor -->
+    <!-- endbuild -->
 
-    <!-- app -->
+    <!-- build:css({.tmp,.}) styles/style.css -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- end -->
+    <!-- endbuild -->
 
 
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -77,6 +70,19 @@ var __client = '<?=$this->e($client)?>';
                     <div class="col-xs-12 loading-animation" ng-if="controller.apps.length"><i class="fa fa-gear fa-spin" ></i></div>
                 </div>
                 <div class="row" ng-controller="AppListCtrl as controller">
+                    <div class="col-sm-12" ng-controller="ClientNotExistCtrl as clientController" ng-if="controller.apps && controller.apps.length == 0" class="text-danger text-center" ng-cloak>
+                        <div class="alert fadeInUp animated " ng-class="{'alert-danger':clientController.__client, 'alert-success':!clientController.__client}"  role="alert">
+                            <div ng-if="clientController.__client">
+                                <span>Client '{{clientController.__client}}' doesn't exist, Are you means one of the following ?</span>
+                            </div>
+                            <div ng-if="!clientController.__client">
+                                <span>Please select one of the client to download app.</span>
+                            </div>
+                            <ul class="center-block">
+                                <li ng-repeat="client in clientController.clients" class="fade-animation" style="display:inline;"><a ng-href="./{{client.name}}">{{client.name}}</a>{{$last?'':', '}}</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col-sm-6 app-animation" ng-repeat="app in controller.apps" ng-cloak>
                         <div class="media">
                             <div class="media-left">
@@ -89,8 +95,8 @@ var __client = '<?=$this->e($client)?>';
                             <div class="media-body">
                                 <div class="internaluse" ng-if='app.internaluse'>{{app.internaluse}}</div>
                                 <div class="requirement" ng-if='app.platform'><i class="fa" ng-class="{'fa-apple':app.platform=='ios', 'fa-android':app.platform=='android'}"></i> {{app.requirement}}</div>
-                                <div class="lastupdate"  ng-if='app.lastupdate'>Last update: {{app.lastupdate|date:'EEE, dd MMM yyyy'}}</div>
-                                <div class="provisionexpire" ng-if='app.provisionexpire'>Provision expire: {{app.provisionexpire|date:'EEE, dd MMM yyyy'}}</div>
+                                <div class="lastupdate"  ng-if='app.lastupdate'>Last update: <span class="inline-block">{{app.lastupdate|date:'EEE, dd MMM yyyy'}}</span></div>
+                                <div class="provisionexpire" ng-if='app.provisionexpire'>Provision expire: <span class="inline-block">{{app.provisionexpire|date:'EEE, dd MMM yyyy'}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -100,40 +106,32 @@ var __client = '<?=$this->e($client)?>';
     </div>
 
 
-    <!-- vendor -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')
+        window.jQuery || document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>')
     </script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <!--    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
-    <!--    <script src="bower_components/ng-country-select/dist/ng-country-select.min.js"></script>-->
-    <!--    <script src="bower_components/select2/dist/js/select2.min.js"></script>-->
-    <!--    <script src="bower_components/angular-animate/angular-animate.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
-    <!--    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
-    <!--    <script src="bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>-->
-    <!--    <script src="bower_components/bootbox/bootbox.js"></script>-->
-    <!--    <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>-->
-    <!-- end vendor -->
+    <!-- endbuild -->
 
 
-    <!-- app -->
+    <!-- build:js({.tmp,.}) scripts/scripts.js -->
     <script src="js/parse-1.4.2.min.js"></script>
     <script src="js/ParseService.js"></script>
     <script src="js/sax-js-master/lib/sax.js"></script>
     <script src="js/plist-parser-master/lib/plist-parser.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/service.js"></script>
     <script src="js/directive.js"></script>
-<!--    <script src="js/route.js"></script>-->
     <script src="js/controller.js"></script>
     <script src="js/main.js"></script>
-    <!-- end -->
+    <!-- endbuild -->
 </body>
 
 </html>
