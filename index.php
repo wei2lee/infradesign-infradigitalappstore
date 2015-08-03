@@ -10,10 +10,16 @@ $app->hook('slim.before', function () use ($app, $templates) {
     $templates->addData(['baseUrl' => $baseUrl]);
 });
 $app->get('/', function () use ($templates) {
-    echo $templates->render('client-app-list', ['client' => '']);
+    echo $templates->render('client-app-list', ['client' => '', 'app' => null, 'platform' => null]);
 });
 $app->get('/:client/', function ($client) use ($templates) {
-    echo $templates->render('client-app-list', ['client' => $client]);
+    echo $templates->render('client-app-list', ['client' => $client, 'app' => null, 'platform' => null]);
+});
+$app->get('/:client/:app/', function ($client, $app) use ($templates) {
+    echo $templates->render('client-app-list', ['client' => $client, 'app' => $app, 'platform' => null]);
+});
+$app->get('/:client/:app/:platform/', function ($client, $app, $platform) use ($templates) {
+    echo $templates->render('client-app-list', ['client' => $client, 'app' => $app, 'platform' => $platform]);
 });
 $app->get('/:client/:app/:platform/install', function ($client, $app, $platform) use ($templates) {
     echo $templates->render('app-install', ['client' => $client, 'app' => $app, 'platform' => $platform]);

@@ -78,20 +78,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="button1id"></label>
-                                        <div class="col-md-10">
+                                        <div class="col-xs-12">
                                             <a class="backtoappstore pull-right" ng-href="{{controller.app.client.name}}" target="_self">Back to Appstore</a>
                                             <a class="loginbtn pull-right" ng-click="controller.login()" href="javascript:void(0)">Login</a>
                                         </div>
+                                        <div class="col-xs-12">
                                         <small class="animated fadeInRight text-danger" ng-if="controller.alert.message">{{controller.alert.message}}</small>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
                         <div ng-if="controller.stat == 1" id="install-link">
                             <div class="thankyou">Thank you!</div>
-                            <div class="clickheretodownload"><a ng-href="{{controller.app.downloadsrc}}"><u><strong>CLICK HERE TO DOWNLOAD</strong></u></a></div>
-                            <div class="backtoappstore"><a  ng-href="{{controller.app.client.name}}"  target="_self">Back to Apps Store</a></div>
+                            <div class="clickheretodownload"><a target="_self" ng-href="{{controller.app.downloadsrc}}"><u><strong>CLICK HERE TO DOWNLOAD</strong></u></a></div>
+                            <div class="backtoappstore"><a ng-href="{{controller.app.client.name}}"  target="_self">Back to Apps Store</a></div>
                         </div>
                     </div>
                 </div>

@@ -274,7 +274,14 @@ form div.radio {
 }
 
 .app-animation {
+   -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+
     &.ng-enter {
+        transition-delay: 0.3s;
         transition: 0.3s ease-out all;
         opacity: 0;
         right: -20px;
@@ -288,6 +295,47 @@ form div.radio {
         right: 0px;
     }
 }
+
+.loading-gear {
+    .text-center;
+    font-size: 36px;
+    width:100%;
+}
+.loading-content {
+}
+.loading-fade-animation {
+    &.ng-enter {
+        transition: 0.3s ease-out all;
+        opacity: 0;
+    }
+    &.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    &.ng-leave {
+        transition: 0.3s ease-out all;
+        opacity: 1;
+    }
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+}
+.loading-height-animation {
+    &.ng-enter {
+        transition: 0.3s ease-out all;
+        height: 0;
+    }
+    &.ng-enter.ng-enter-active {
+        height: 36px;
+    }
+    &.ng-leave {
+        transition: 0.3s ease-out all;
+        height: 36px;
+    }
+    &.ng-leave.ng-leave-active {
+        height: 0;
+    }
+}
+
 
 .fade-animation {
     &.ng-enter {
@@ -310,29 +358,6 @@ form div.radio {
     }
 }
 
-
-.loading-animation {
-    .text-center;
-    font-size: 36px;
-    &.ng-enter {
-        transition: 3.5s ease-out all;
-        opacity: 0;
-        left: 20px;
-    }
-    &.ng-enter.ng-enter-active {
-        opacity: 1;
-        left: 0px;
-    }
-    &.ng-leave {
-        transition: 3.5s ease-out all;
-        opacity: 1;
-        left: 0px;
-    }
-    &.ng-leave.ng-leave-active {
-        opacity: 0;
-        left: -20px;
-    }
-}
 
 .media {
     padding: @content-padding-sm;

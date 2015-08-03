@@ -1,5 +1,6 @@
 function MainCtrl($timeout) {
     var _this = this;
+    _this.loadingComplete = false;
 }
 
 function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
@@ -9,14 +10,28 @@ function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
     _this.apps = undefined;
     
     _this.__client = __client;
+    _this.__app = __app;
+    _this.__platform = __platform;
+    
+    var start = new Date().getTime();
+    
     $timeout(function () {
-        var clientQuery = new Parse.Query(new ParseClient().className);
-        clientQuery.equalTo('name', _this.__client);
+        
         var appQuery = new Parse.Query(new ParseApp().className);
         appQuery.include('client');
         appQuery.equalTo('visible', true);
+        if(_this.__app) {
+            appQuery.equalTo('name', _this.__app);   
+        }
+        if(_this.__platform) {
+            appQuery.equalTo('platform', _this.__platform);   
+        }
         appQuery.ascending('displayname');
+        
+        var clientQuery = new Parse.Query(new ParseClient().className);
+        clientQuery.equalTo('name', _this.__client);
         var appQueryWhereClient = appQuery.matchesQuery('client', clientQuery);
+        
         appQueryWhereClient.find().done(function(results) {
             _this.apps = _.map(results, function(o) {
                 return new ParseApp(o); 
@@ -24,7 +39,9 @@ function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
         }).fail(function(error) {
             
         }).always(function(){
-            $scope.$apply();
+            $timeout(function() {
+                $scope.main.loadingComplete = true;
+            });
         });
     }, 0);
 }

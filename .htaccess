@@ -4,7 +4,7 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase /dk/web/dev/infradesign/infradigital_appstore/src/infradesign-infradigitalappstore/
+    RewriteBase /dk/web/dev/infradesign/infradigital_appstore/src/infradesign-infradigitalappstore-frontend/
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ $1 [L,R=301]

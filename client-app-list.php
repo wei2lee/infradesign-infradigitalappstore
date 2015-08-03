@@ -1,11 +1,15 @@
 <script>
 var __client = '<?=$this->e($client)?>';
+var __app = '<?=$this->e($app)?>';
+var __platform = '<?=$this->e($platform)?>';
 </script>
 
 <!doctype html>
 <html class="no-js" lang="" ng-app="appstore">
 
 <head>
+    <base href="<?=$this->e($baseUrl)?>" target="_blank">
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
@@ -67,10 +71,10 @@ var __client = '<?=$this->e($client)?>';
             <div class="container">
                 <h2 class="text-center animated fadeInDown">Internal Apps Store</h2>
                 <div class="row">
-                    <div class="col-xs-12 loading-animation" ng-if="controller.apps.length"><i class="fa fa-gear fa-spin" ></i></div>
+                    <div class="col-xs-12 loading-fade-animation loading-height-animation loading-gear" ng-if="!main.loadingComplete"><i class="fa fa-gear fa-spin" ></i></div>
                 </div>
                 <div class="row" ng-controller="AppListCtrl as controller">
-                    <div class="col-sm-12" ng-controller="ClientNotExistCtrl as clientController" ng-if="controller.apps && controller.apps.length == 0" class="text-danger text-center" ng-cloak>
+                    <div class="col-sm-12 loading-fade-animation loading-content" ng-controller="ClientNotExistCtrl as clientController" ng-if="controller.apps && controller.apps.length == 0" class="text-danger text-center" ng-cloak>
                         <div class="alert fadeInUp animated " ng-class="{'alert-danger':clientController.__client, 'alert-success':!clientController.__client}"  role="alert">
                             <div ng-if="clientController.__client">
                                 <span>Client '{{clientController.__client}}' doesn't exist, Are you means one of the following ?</span>
@@ -79,14 +83,14 @@ var __client = '<?=$this->e($client)?>';
                                 <span>Please select one of the client to download app.</span>
                             </div>
                             <ul class="center-block">
-                                <li ng-repeat="client in clientController.clients" class="fade-animation" style="display:inline;"><a ng-href="./{{client.name}}">{{client.name}}</a>{{$last?'':', '}}</li>
+                                <li ng-repeat="client in clientController.clients" class="fade-animation" style="display:inline;"><a target="_self" ng-href="./{{client.name}}">{{client.name}}</a>{{$last?'':', '}}</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 app-animation" ng-repeat="app in controller.apps" ng-cloak>
                         <div class="media">
                             <div class="media-left">
-                                <a ng-href="./{{app.client.name}}/{{app.name}}/{{app.platform}}/install">
+                                <a target="_self" ng-href="./{{app.client.name}}/{{app.name}}/{{app.platform}}/install">
                                     <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=72>
                                     <div class="appname">{{app.displayname}}</div>
                                     <div class="version" ng-if='app.version'>Version {{app.version}}</div>
