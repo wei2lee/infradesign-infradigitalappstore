@@ -9876,6 +9876,8 @@ form div.radio {
   opacity: 0;
 }
 .media {
+  display: block;
+  text-decoration: none;
   padding: 10px;
   border-radius: 10px;
   border: solid 1px #d5ccc5;
@@ -9910,6 +9912,16 @@ form div.radio {
   line-height: 1.1em;
   text-align: center;
 }
+@media screen and (device-width: 375px) {
+  .media .appname {
+    font-size: 12px;
+  }
+}
+@media screen and (device-width: 414px) {
+  .media .appname {
+    font-size: 12px;
+  }
+}
 @media screen and (min-width: 480px) {
   .media .appname {
     font-size: 14px;
@@ -9918,6 +9930,16 @@ form div.radio {
 .media .version {
   font-size: 10px;
   text-align: center;
+}
+@media screen and (device-width: 375px) {
+  .media .version {
+    font-size: 12px;
+  }
+}
+@media screen and (device-width: 414px) {
+  .media .version {
+    font-size: 12px;
+  }
 }
 @media screen and (min-width: 480px) {
   .media .version {
@@ -9930,10 +9952,30 @@ form div.radio {
   font-size: 11px;
   margin-bottom: 10px;
 }
+@media screen and (device-width: 375px) {
+  .media .internaluse {
+    font-size: 12px;
+  }
+}
+@media screen and (device-width: 414px) {
+  .media .internaluse {
+    font-size: 12px;
+  }
+}
 .media .requirement {
   line-height: 1.2em;
   font-size: 11px;
   margin-bottom: 5px;
+}
+@media screen and (min-width: 375px) {
+  .media .requirement {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 414px) {
+  .media .requirement {
+    font-size: 16px;
+  }
 }
 @media screen and (min-width: 480px) {
   .media .requirement {
@@ -9945,10 +9987,26 @@ form div.radio {
     font-size: 18px;
   }
 }
+.media .requirement i.fa {
+  font-size: 150%;
+}
+.media .requirement i.fa:after {
+  content: ' ';
+}
 .media .lastupdate {
   line-height: 1.2em;
   font-size: 11px;
   margin-bottom: 5px;
+}
+@media screen and (min-width: 375px) {
+  .media .lastupdate {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 414px) {
+  .media .lastupdate {
+    font-size: 16px;
+  }
 }
 @media screen and (min-width: 480px) {
   .media .lastupdate {
@@ -9968,6 +10026,16 @@ form div.radio {
   left: 19.2px;
   font-size: 10px;
 }
+@media screen and (min-width: 375px) {
+  .media .provisionexpire {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 414px) {
+  .media .provisionexpire {
+    font-size: 12px;
+  }
+}
 @media screen and (min-width: 480px) {
   .media .provisionexpire {
     font-size: 11px;
@@ -9986,6 +10054,10 @@ form div.radio {
     padding: 20px 0 35px 93px;
     text-align: left;
   }
+}
+#topbar {
+  display: block;
+  text-decoration: none;
 }
 #app-install #wrapper {
   display: table;
@@ -10040,6 +10112,10 @@ form div.radio {
 .form-panel form [type=submit]:focus {
   border: none;
 }
+.form-panel .appname {
+  font-size: 18px;
+  white-space: nowrap;
+}
 #install-link .thankyou {
   font-size: 24px;
   margin-bottom: 40px;
@@ -10047,11 +10123,16 @@ form div.radio {
 }
 #install-link .clickheretodownload {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   text-align: center;
 }
 #install-link .backtoappstore {
   font-size: 14px;
   margin-bottom: 20px;
   text-align: center;
+}
+#install-link .appname {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
 }

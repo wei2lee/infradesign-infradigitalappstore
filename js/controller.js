@@ -3,7 +3,7 @@ function MainCtrl($timeout) {
     _this.loadingComplete = false;
 }
 
-function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
+function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient,$location) {
     var _this = this;
     
     //__xxxxx variable is embed at top of the .html(or .php) file
@@ -44,6 +44,13 @@ function AppListCtrl($scope, $timeout, ParseQuery, ParseApp, ParseClient) {
             });
         });
     }, 0);
+    
+    $scope.clickApp = function(app) {
+//        console.log('clickApp');
+//        var path = "./"+app.client.name+"/"+app.name+"/"+app.platform+"/install";
+//        console.log(path);
+//        $location.path(path);
+    }
 }
 
 function AppCtrl($scope, $timeout, ParseApp, ParseClient) {

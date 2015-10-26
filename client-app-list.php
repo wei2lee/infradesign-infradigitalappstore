@@ -57,7 +57,7 @@ var __platform = '<?=$this->e($platform)?>';
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
-        <div id="topbar" class="animated fadeInDown">
+        <a href="." target="_self" id="topbar" class="animated fadeInDown">
             <div class="container">
                 <div id="header">
                     <img src="img/logo.png">
@@ -66,7 +66,7 @@ var __platform = '<?=$this->e($platform)?>';
             <div id="slogan" class="text-center">
                 making ideas happen
             </div>
-        </div>
+        </a>
         <div id="content-wrapper">
             <div class="container">
                 <h2 class="text-center animated fadeInDown">Internal Apps Store</h2>
@@ -88,7 +88,7 @@ var __platform = '<?=$this->e($platform)?>';
                         </div>
                     </div>
                     <div class="col-sm-6 app-animation" ng-repeat="app in controller.apps" ng-cloak>
-                        <div class="media">
+                        <div class="media" ng-click="clickApp(app)">
                             <div class="media-left">
                                 <a target="_self" ng-href="./{{app.client.name}}/{{app.name}}/{{app.platform}}/install">
                                     <img class="applogo media-object" ng-src="{{app.logosrc}}" width=72 height=72>

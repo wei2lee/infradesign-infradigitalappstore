@@ -62,7 +62,7 @@
                 <div class="row" ng-controller="AppCtrl as controller">
                     <div class="form-panel animated fadeInUp" id="install-authencation" ng-if="controller.stat == 0 || controller.stat == 1" ng-cloak>
                         <div ng-if="controller.stat == 0">
-                            <div class="form-title">Please login to install:</div>
+                            <div class="form-title">Please login to install <span class="appname">{{controller.app.displayname}} :</span></div>
                             <form class="form-horizontal" name="form" ng-submit="controller.login()">
                                 <fieldset>
                                     <div class="form-group">
@@ -92,6 +92,7 @@
                         <div ng-if="controller.stat == 1" id="install-link">
                             <div class="thankyou">Thank you!</div>
                             <div class="clickheretodownload"><a target="_self" ng-href="{{controller.app.downloadsrc}}"><u><strong>CLICK HERE TO DOWNLOAD</strong></u></a></div>
+                            <div class="appname">{{controller.app.displayname}}</div>
                             <div class="backtoappstore"><a ng-href="{{controller.app.client.name}}"  target="_self">Back to Apps Store</a></div>
                         </div>
                     </div>

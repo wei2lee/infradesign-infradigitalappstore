@@ -360,6 +360,9 @@ form div.radio {
 
 
 .media {
+    display:block;
+    text-decoration: none;
+    
     padding: @content-padding-sm;
     @media screen and (min-width:@screen-ms-min) {
         padding: @content-padding;
@@ -389,6 +392,12 @@ form div.radio {
     }
     .appname {
         font-size:11px;
+        @media screen and (device-width: 375px) {
+            font-size:12px;
+        }
+        @media screen and (device-width: 414px) {
+            font-size:12px;
+        }
         @media screen and (min-width:@screen-ms-min) {
             font-size: 14px;
         }
@@ -397,6 +406,12 @@ form div.radio {
     }
     .version {
         font-size:10px;
+        @media screen and (device-width: 375px) {
+            font-size:12px;
+        }
+        @media screen and (device-width: 414px) {
+            font-size:12px;
+        }
         @media screen and (min-width:@screen-ms-min) {
             font-size: 11px;
         }
@@ -406,12 +421,25 @@ form div.radio {
         color:lighten(@text-color, 20%);
         line-height:1.2em;
         font-size: 11px;
+        @media screen and (device-width: 375px) {
+            font-size:12px;
+        }
+        @media screen and (device-width: 414px) {
+            font-size:12px;
+        }
+        
         margin-bottom: @content-padding-xsm * 2;
         
     }
     .requirement {
         line-height: 1.2em;
         font-size:11px;
+        @media screen and (min-width: 375px){
+            font-size:14px;
+        }
+        @media screen and (min-width: 414px) {
+            font-size:16px;
+        }
         @media screen and (min-width:@screen-ms-min) {
             font-size:14px;
         }
@@ -419,10 +447,23 @@ form div.radio {
             font-size: 18px;
         }
         margin-bottom: @content-padding-xsm;
+        
+        i.fa {
+            font-size:150%;
+            &:after {
+                content:' '
+            }
+        }
     }
     .lastupdate {
         line-height: 1.2em;
         font-size:11px;
+        @media screen and (min-width: 375px){
+            font-size:14px;
+        }
+        @media screen and (min-width: 414px) {
+            font-size:16px;
+        }
         @media screen and (min-width:@screen-ms-min) {
             font-size:14px;
         }
@@ -438,9 +479,16 @@ form div.radio {
         bottom: 0;
         left: 19.2px;
         font-size:10px;
+        @media screen and (min-width: 375px){
+            font-size:12px;
+        }
+        @media screen and (min-width: 414px) {
+            font-size:12px;
+        }
         @media screen and (min-width:@screen-ms-min) {
             font-size: 11px;
         }
+
         //margin-bottom: @content-padding-xsm;
     }
 }
@@ -457,6 +505,10 @@ form div.radio {
         padding: 20px 0 35px 93px;
         text-align: left;
     }
+}
+#topbar {
+    display:block;
+    text-decoration: none;
 }
 
 
@@ -516,6 +568,11 @@ form div.radio {
             }
         }
     }
+    
+    .appname {
+        font-size:18px;   
+        white-space:nowrap;
+    }
 }
 
 #install-authencation {
@@ -531,7 +588,7 @@ form div.radio {
     
     .clickheretodownload {
         font-size:14px;
-        margin-bottom:20px;
+        margin-bottom:4px;
         .text-center;
     }
     
@@ -539,6 +596,11 @@ form div.radio {
         font-size:14px;
         margin-bottom:20px;
         .text-center;
+    }
+    .appname {
+        font-size:24px;   
+        .text-center;
+        margin-bottom:20px;
     }
 }
 
