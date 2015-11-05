@@ -9891,7 +9891,7 @@ form div.radio {
 }
 @media screen and (min-width: 480px) {
   .media {
-    min-height: 170px;
+    min-height: 180px;
   }
 }
 .media a:hover {
